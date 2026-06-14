@@ -1,0 +1,367 @@
+/* src/styles/Technology.module.css */
+
+.pageContainer {
+  padding-top: 60px;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.lightCyberGridBG {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  background-image: 
+    linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+  background-size: 55px 55px;
+  transform: perspective(1000px) rotateX(60deg);
+  z-index: 1;
+}
+
+.sectionGrey {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 80px 0;
+  width: 100%;
+  border-top: 1px solid #e2e8f0;
+}
+
+.wideSection {
+  width: 94%;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.metaLabelCentred {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2563eb;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.cyberTitle {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #344a86;
+  text-align: center;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.titleLine {
+  width: 160px; height: 4px;
+  background: linear-gradient(90deg, transparent, #2563eb, #38bdf8, transparent);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   SECTION 1: TECH GRID PANELS (ANIMATED LOADING INTRO + HOVER LIVE JITTER SHAKE)
+   ========================================================================== */
+.gridContainerTech {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.techCard3D {
+  background: rgba(212, 224, 250, 0.96); 
+  border: 1px solid #f0f4ff;
+  border-radius: 20px;
+  padding: 35px 25px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  transform: perspective(1000px) translateZ(0);
+  transform-style: preserve-3d;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s linear;
+
+  /* Staggered On-Load Card Intrusion Cascade Animation */
+  opacity: 0;
+  animation: cardEntranceReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  animation-delay: calc(var(--card-index) * 120ms);
+}
+
+/* Combines 3D perspective lift with an active, fast holographic matrix jitter shake */
+.techCard3D:hover {
+  border-color: #1f57d1;
+  box-shadow: 0 30px 60px -5px rgba(15, 23, 42, 0.35), 0 0 25px rgba(56, 189, 248, 0.25);
+  animation: holographicLiveJitter 0.35s linear infinite;
+}
+
+.techCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  transform-style: preserve-3d;
+}
+
+/* --- BRAND ICON FLOATING LAYER --- */
+.imageWrapper3D {
+  background: #ffffff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: relative;
+  transform-style: preserve-3d;
+  animation: logoFloatingBreath 4s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.techCard3D:hover .imageWrapper3D {
+  transform: translateZ(28px) scale(1.06);
+  border-color: #2563eb;
+}
+
+.techPhoto3D {
+  width: 85px; height: 85px;
+  object-fit: contain;
+  z-index: 5;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+}
+
+.imageShadowIndicator {
+  position: absolute; bottom: -4px; width: 75%; height: 4px;
+  background: rgba(0, 0, 0, 0.12); border-radius: 50%; filter: blur(2px); z-index: 1;
+  animation: logoShadowPulse 4s ease-in-out infinite;
+}
+.techCard3D:hover .imageShadowIndicator {
+  background: rgba(37, 99, 235, 0.2); width: 55%; filter: blur(3px);
+}
+
+.categoryBadge {
+  background: rgba(37, 99, 235, 0.15);
+  color: #5373ff;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  font-size: 0.72rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase;
+}
+
+.nodeText {
+  font-size: 1.4rem; font-weight: 800; color: #030303; margin: 0 0 10px 0;
+}
+.descText {
+  font-size: 0.95rem; color: #767d86; line-height: 1.6; margin: 0;
+}
+.cardGlowPulse {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  opacity: 0; transition: opacity 0.3s ease;
+}
+.techCard3D:hover .cardGlowPulse { opacity: 1; }
+
+/* ==========================================================================
+   SECTION 2: MATH PILE ENGINE SPREAD MATRICES
+   ========================================================================== */
+.stackVisualStage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  min-height: 340px;
+}
+
+.interactiveDeckWrapper {
+  position: relative;
+  width: 330px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.deckSpreadActive {
+  width: 100% !important;
+  max-width: 1440px;
+  height: auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px !important;
+}
+
+.placeholderFrontCard, .layeredMathCard {
+  position: absolute;
+  width: 320px;
+  min-height: 195px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 26px 24px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.3s, box-shadow 0.3s;
+}
+
+.placeholderFrontCard {
+  z-index: 250;
+  animation: frontTileFloat 3s ease-in-out infinite;
+}
+
+.placeholderHeader {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+}
+
+.clickActionRing {
+  position: relative; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
+}
+.clickFingerIcon { font-size: 1.15rem; z-index: 5; }
+.clickPulseWave {
+  position: absolute; width: 100%; height: 100%; background: rgba(37, 99, 235, 0.15); border-radius: 50%;
+  animation: clickRadar 1.6s infinite ease-out; z-index: 1;
+}
+
+.placeholderDisplayBox {
+  background-color: #dee6fa;
+  padding: 16px 12px;
+  border-radius: 10px;
+  border-left: 4px solid #2563eb;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 75px;
+}
+
+.placeholderDisplayGradientText {
+  font-family: 'Inter', sans-serif; color: #4062c2; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.gridPositioning {
+  position: relative !important;
+  width: 100% !important;
+  left: auto !important;
+  top: auto !important;
+  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.04);
+}
+
+.layeredMathCard:hover {
+  border-color: #2563eb;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(30, 58, 138, 0.12);
+}
+
+.neonCornerTL {
+  position: absolute; top: -1px; left: -1px; width: 14px; height: 14px;
+  border-top: 3px solid #2563eb; border-left: 3px solid #2563eb; border-top-left-radius: 6px;
+}
+.neonCornerBR {
+  position: absolute; bottom: -1px; right: -1px; width: 14px; height: 14px;
+  border-bottom: 3px solid #2563eb; border-right: 3px solid #2563eb; border-bottom-right-radius: 6px;
+}
+
+.mathHeader {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+}
+.formulaId {
+  background: #2563eb; color: #ffffff;
+  font-size: 0.75rem; font-weight: 800; padding: 4px 8px; border-radius: 4px; font-family: monospace;
+}
+.mathNodeTitle {
+  margin: 0; font-size: 1.35rem; font-weight: 800; color: #0f172a;
+}
+
+.formulaDisplay {
+  background-color: #eff6ff;
+  padding: 18px 24px;
+  border-radius: 10px;
+  border-left: 4px solid #2563eb;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  min-height: 80px;
+  box-shadow: inset 0 2px 4px rgba(37, 99, 235, 0.03);
+}
+.glowCode {
+  font-family: 'Fira Code', monospace; color: #1e3a8a; font-size: 1.05rem; font-weight: 700; line-height: 1.5;
+}
+
+/* ==========================================================================
+   SECTION 3: OUTSIDE READOUT CORE SYSTEM TERMINAL
+   ========================================================================== */
+.finalCompilationBlockOutside {
+  width: 100%; margin-top: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.compilationTitle {
+  font-size: 2rem; font-weight: 900; color: #1e3a8a; letter-spacing: 0.02em; margin: 0 0 25px 0; display: flex; align-items: center; gap: 12px;
+}
+.trophyIcon { font-size: 1.8rem; }
+
+.matchedFormulaTerminal {
+  width: 100%; max-width: 1100px; background-color: #0f172a; border: 2px solid #1e3a8a; border-radius: 16px; padding: 35px 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+}
+.formulaRowTop code {
+  font-family: 'Fira Code', monospace; font-size: 1.3rem; color: #ffffff; font-weight: 700; text-align: center;
+}
+.terminalInnerDivider {
+  width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 24px 0;
+}
+.formulaRowBottom code {
+  font-family: 'Fira Code', monospace; font-size: 1.35rem; color: #38bdf8; font-weight: 800;
+}
+.compilationFootnote {
+  margin: 24px 0 0 0; color: #64748b; font-size: 0.95rem; text-align: center;
+}
+
+/* ==========================================================================
+   VECTORS TIMING KEYFRAMES
+   ========================================================================== */
+@keyframes cardEntranceReveal {
+  0% { opacity: 0; transform: translateY(35px) perspective(1000px) rotateX(10deg); }
+  100% { opacity: 1; transform: translateY(0) perspective(1000px) rotateX(0deg); }
+}
+
+/* Micro-Jitter calculation vectors for hover state */
+@keyframes holographicLiveJitter {
+  0% { transform: perspective(1000px) translateY(-8px) translateZ(12px) translateX(0px) rotateY(0deg); }
+  20% { transform: perspective(1000px) translateY(-7.5px) translateZ(12px) translateX(-0.5px) rotateY(-0.2deg); }
+  40% { transform: perspective(1000px) translateY(-8.5px) translateZ(12px) translateX(0.5px) rotateY(0.2deg); }
+  60% { transform: perspective(1000px) translateY(-7.5px) translateZ(12px) translateX(-0.5px) rotateY(-0.1deg); }
+  80% { transform: perspective(1000px) translateY(-8px) translateZ(12px) translateX(0.5px) rotateY(0.1deg); }
+  100% { transform: perspective(1000px) translateY(-8px) translateZ(12px) translateX(0px) rotateY(0deg); }
+}
+
+@keyframes logoFloatingBreath {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes logoShadowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.12; }
+  50% { transform: scale(0.85); opacity: 0.05; }
+}
+@keyframes frontTileFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes clickRadar {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* --- ADAPTIVE RESPONSIVENESS OVERRIDES --- */
+@media (max-width: 1200px) {
+  .gridContainerTech, .deckSpreadActive { grid-template-columns: repeat(2, 1fr) !important; }
+  .interactiveDeckWrapper { width: max-content; gap: 24px; position: static; display: flex; flex-direction: column; }
+  .layeredMathCard { position: static; width: 100%; transform: none !important; opacity: 1 !important; }
+  .placeholderFrontCard { display: none; }
+}
+@media (max-width: 768px) {
+  .gridContainerTech, .deckSpreadActive { grid-template-columns: 1fr !important; }
+  .cyberTitle { font-size: 2.2rem; }
+  .formulaRowTop code, .formulaRowBottom code { font-size: 0.9rem; }
+}

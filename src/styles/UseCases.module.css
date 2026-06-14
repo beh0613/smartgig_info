@@ -1,0 +1,274 @@
+/* src/styles/UseCases.module.css */
+
+.pageContainer {
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 80px 4% 100px 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topSectionBadge {
+  background-color: #f5f0ff;
+  color: #a855f7;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.mainPageTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.02em;
+}
+
+.mainPageSubtitle {
+  font-size: 1.15rem;
+  color: #64748b;
+  margin: 0 0 50px 0;
+  text-align: center;
+}
+
+/* ==========================================================================
+   WORKSPACE CONTAINER & NAVIGATION TABS
+   ========================================================================== */
+.useCaseWorkspace {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.02);
+}
+
+.tabsHeaderBar {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.tabTriggerButton {
+  background: none;
+  border: none;
+  padding: 20px 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.tabIconDecoration {
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+.tabTriggerButton:hover {
+  color: #2563eb;
+  background-color: #f1f5f9;
+}
+
+/* Active Highlight Accent State matching photo reference tabs */
+.tabTriggerActive {
+  color: #2563eb;
+  background-color: #ffffff;
+  font-weight: 700;
+}
+
+.tabTriggerActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #2563eb;
+}
+
+/* ==========================================================================
+   SPLIT CONTENT BODY PANELS
+   ========================================================================== */
+.splitContentBody {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  padding: 50px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+/* --- LEFT SIDE DATA CONSOLE --- */
+.contentLeftColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sectorCategoryBadge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #2563eb;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+.sectorMainTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+}
+
+.sectorTaglineDesc {
+  font-size: 1.1rem;
+  color: #475569;
+  margin: 0 0 35px 0;
+  line-height: 1.5;
+}
+
+.bulletPointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bulletItemRow {
+  display: flex;
+  align-items: start;
+  gap: 16px;
+}
+
+.checkmarkIcon {
+  color: #2563eb;
+  font-weight: 900;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.bulletTextContent {
+  font-size: 1.1rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   RIGHT SIDE APP DISPLAY COMPONENT CARD
+   ========================================================================== */
+.contentRightColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureHighlightContainerCard {
+  width: 100%;
+  background-color: #fbf9ff; /* Subtle tinted white layout container background */
+  border: 1px solid #f3efff;
+  border-radius: 24px;
+  padding: 35px;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.01);
+}
+
+/* Aesthetic matching corner clips */
+.innerCardNeonLineTL {
+  position: absolute; top: -1px; left: -1px; width: 14px; height: 14px;
+  border-top: 3px solid #2563eb; border-left: 3px solid #2563eb; border-top-left-radius: 6px;
+}
+.innerCardNeonLineBR {
+  position: absolute; bottom: -1px; right: -1px; width: 14px; height: 14px;
+  border-bottom: 3px solid #2563eb; border-right: 3px solid #2563eb; border-bottom-right-radius: 6px;
+}
+
+.featuresStackLayoutList {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.featureListItemRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.featureIconBlockAvatar {
+  width: 48px;
+  height: 48px;
+  background-color: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.innerAvatarIcon {
+  color: #2563eb;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.featureTextWrapperMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.featureBlockHeadingTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+.featureBlockParagraphDesc {
+  font-size: 0.92rem;
+  color: #64748b;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT CONSTRAINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .splitContentBody { grid-template-columns: 1fr; gap: 40px; padding: 35px; }
+  .tabsHeaderBar { grid-template-columns: repeat(3, 1fr); }
+  .tabTriggerButton { padding: 15px 5px; font-size: 0.9rem; }
+}
+
+@media (max-width: 640px) {
+  .tabsHeaderBar { grid-template-columns: 1fr; }
+  .tabTriggerActive ::after { display: none; }
+  .mainPageTitle { font-size: 2.2rem; }
+  .sectorMainTitle { font-size: 1.7rem; }
+  .bulletTextContent { font-size: 1rem; }
+  .featureHighlightContainerCard { padding: 20px; }
+}

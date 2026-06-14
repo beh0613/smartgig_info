@@ -1,0 +1,263 @@
+/* src/styles/App.module.css */
+
+.wrapper {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  
+}
+
+.mainContent {
+  flex: 1;
+}
+
+/* ==========================================================================
+   SMOOTH BLENDED COMMAND NAVBAR
+   ========================================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  height: 120px; /* Slimmed down slightly to look more balanced */
+  font-size: 36px;
+  /* FIXED: Blends seamlessly with the dark blue base of your hero section gradient */
+  background: linear-gradient(180deg, rgb(21, 69, 180) 0%, rgb(31, 82, 201) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Subtle transparent border instead of a solid line */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Soft, deep ambient shadow to remove harsh edges */
+  box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.15);
+  
+  transition: all 0.3s ease;
+}
+
+/* --- THE LOGO IDENTITY NODE --- */
+.navBrandContainer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.logoHologramRing {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.navBrandContainer:hover .logoHologramRing {
+  transform: scale(1.04);
+}
+
+.brandLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.textIdentityBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.pidBadgeRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.pidBadgeText {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.uumLabelText {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #93c5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* --- CYBER DECK NAVIGATION CHIPS --- */
+/* --- CYBER DECK NAVIGATION CHIPS --- */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Increased padding gap between navigation links */
+}
+
+.navLink {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.9); /* Enhanced white text visibility */
+  
+  /* --- INCREASED FONT SCALE --- */
+  font-size: 26px; /* Upscaled from 18px for better readability */
+  font-weight: 700;
+  
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Structural bottom dash line accent loop */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0px; left: 50%;
+  width: 0; height: 3px; /* Thickened hover underline indicator line */
+  background-color: #ffffff;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.navLink:hover::after {
+  width: 32px; /* Widened bar scale on active mouse hover states */
+}
+
+/* --- CALL TO ACTION RADAR PILL CONTROL --- */
+.navButton {
+  background-color: transparent;
+  color: #ffffff !important;
+  padding: 12px 30px;
+  border-radius: 8px;
+  margin-left: 12px;
+  font-weight: 800;
+  
+  /* --- INCREASED BUTTON TEXT SCALE --- */
+  font-size: 26px; /* Upscaled to match link font sizes */
+  
+  border: 3px solid rgba(255, 255, 255, 0.6); /* Thickened clean tracking borders */
+  transition: all 0.25s ease !important;
+}
+
+.navButton:hover {
+  background-color: #ffffff;
+  color: #1f52c9 !important; /* Inverts clean layout focus color dynamically */
+  border-color: #ffffff;
+}
+/* ==========================================================================
+   GLOBAL DARK FOOTER COMPONENT
+   ========================================================================== */
+.footer {
+  background-color: #0f172a;
+  color: #fff;
+  padding: 60px 60px 30px 60px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footerContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #334155;
+}
+
+.footerCol { display: flex; flex-direction: column; gap: 14px; }
+.footerLogoContainer { display: flex; align-items: center; gap: 12px; }
+
+.footerLogoMiniFrame {
+  width: 32px; height: 32px; border-radius: 50%; background-color: #ffffff;
+  overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid #334155;
+}
+
+.miniFooterImg { width: 100%; height: 100%; object-fit: cover; }
+.footerLogoText { font-size: 1.5rem; font-weight: 900; letter-spacing: 0.02em; color: #ffffff; }
+.footerDesc { color: #94a3b8; font-size: 0.95rem; margin: 0; }
+.goalBadges { display: flex; gap: 10px; margin-top: 4px; }
+.goalBadge { padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; color: #fff; }
+.footerHeading { font-size: 1.1rem; color: #f8fafc; margin: 0 0 10px 0; }
+.label { color: #64748b; font-size: 0.75rem; text-transform: uppercase; display: block; letter-spacing: 0.02em; }
+.value { margin: 0 0 16px 0; color: #cbd5e1; font-size: 0.98rem; }
+.footerCol .value:last-child { margin-bottom: 0; }
+.copyright { text-align: center; color: #475569; font-size: 0.85rem; margin-top: 30px; }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .navbar { padding: 0 30px; height: 85px; }
+  .footer { padding: 40px 30px 20px 30px; }
+  .footerContainer { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 850px) {
+  .navbar { flex-direction: column; gap: 12px; height: auto; padding: 20px 4%; }
+  .navLinks { gap: 4px; flex-wrap: wrap; justify-content: center; width: 100%; }
+  .navLink { padding: 8px 12px; font-size: 16px; }
+  .navButton { margin-left: 0; width: 100%; text-align: center; margin-top: 4px; }
+}
+
+.goalBadges {
+  display: flex;
+  gap: 14px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+/* Formats the square SDG badges to look crisp, uniformly sized, and well-aligned */
+.sdgFooterGraphic {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.sdgFooterGraphic:hover {
+  transform: translateY(-3px) scale(1.05);
+}

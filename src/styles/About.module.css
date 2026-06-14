@@ -1,0 +1,408 @@
+/* src/styles/About.module.css */
+
+.pageWrapper {
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 75%;
+  
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* --- SECTION 1: HERO CONTAINER GRID --- */
+.sectionBlue {
+  background: radial-gradient(circle at top left, #1e3a8a 0%, #0f172a 100%);
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animating Background Space Line Mesh */
+.sectionBlue::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(600px) rotateX(45deg) translateY(0);
+  animation: backgroundScroll 25s linear infinite;
+  z-index: 1;
+}
+
+.containerSplit {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.heroText {
+  transform: perspective(1000px) rotateY(5deg);
+}
+
+.metaLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #3b82f6;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  animation: shineText 3s ease-in-out infinite alternate;
+}
+
+.sectionHeading {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 0 0 24px 0;
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.mainDescription {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* --- 3D INTERACTIVE GRAPHIC APP PHONE MOCKUP HOOK --- */
+.graphicColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mockupContainer {
+  position: relative;
+  transform: perspective(1000px) rotateX(20deg) rotateY(-25deg) rotateZ(10deg);
+  animation: floatingMockup 5s ease-in-out infinite alternate;
+}
+
+.mockupImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Stretches and preserves ratio inside the mockup shell nicely */
+  border-radius: 32px; /* Curves matching the outer glass frame */
+  pointer-events: none; /* Prevents dragging glitches while spinning */
+}
+.mockupGraphic {
+  width: 300px;
+  height: 600px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 4px solid #475569;
+  border-radius: 40px;
+  box-shadow: 
+    20px 20px 50px rgba(0, 0, 0, 0.5), 
+    -5px -5px 20px rgba(255, 255, 255, 0.05),
+    inset 0 0 20px rgba(59, 130, 246, 0.3);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.mockupGraphic:hover {
+  border-color: #3b82f6;
+}
+
+.mockupPlaceholderText {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 2px dashed #334155;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+/* --- SECTION 2: PROBLEM/OBJECTIVE 3D CARD OVERLAY --- */
+.sectionWhite {
+  background-color: #ffffff;
+  padding: 100px 5%;
+}
+
+.splitGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.gridCard3D {
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gridCard3D:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(30, 58, 138, 0.08);
+}
+
+.glowingBorderRed {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 6px;
+  background: linear-gradient(90deg, #ef4444, transparent);
+}
+
+.glowingBorderGreen {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 6px;
+  background: linear-gradient(90deg, #10b981, transparent);
+}
+
+.cardTitlePrimary { color: #ef4444; margin: 0 0 24px 0; font-size: 1.6rem; font-weight: 800; }
+.cardTitleAccent { color: #10b981; margin: 0 0 24px 0; font-size: 1.6rem; font-weight: 800; }
+
+.list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #475569;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- SECTION 3: 6 INDICATORS WITH GRID DEPTH TRANSLATIONS --- */
+.sectionGrey {
+  background-color: #f8fafc;
+  padding: 100px 5%;
+}
+
+.metaLabelCentred {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #2563eb;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.sectionHeadingCentred {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  text-align: center;
+  margin: 0 0 16px 0;
+}
+
+.subtitleCentred {
+  font-size: 1.2rem;
+  color: #64748b;
+  text-align: center;
+  margin: 0 0 60px 0;
+}
+
+.indicatorsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.indicatorCard3D {
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+}
+
+.indicatorCard3D:hover {
+  transform: translateY(-6px) rotateY(4deg);
+  box-shadow: 0 20px 40px rgba(30, 58, 138, 0.06);
+  border-color: #3b82f6;
+}
+
+.indicatorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.indicatorIcon {
+  font-size: 2rem;
+  background: #f1f5f9;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: background 0.3s;
+}
+
+.indicatorCard3D:hover .indicatorIcon {
+  background: #eff6ff;
+}
+
+.badgeIndex {
+  background-color: #f8fafc;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.indicatorCard3D h4 {
+  font-size: 1.4rem;
+  color: #0f172a;
+  margin: 0 0 12px 0;
+  font-weight: 700;
+}
+
+.indicatorCard3D p {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- SECTION 4: SYSTEM NOVELTY FLEX STACKS --- */
+.noveltyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 30px;
+}
+
+.noveltyCard3D {
+  display: flex;
+  gap: 24px;
+  background-color: #ffffff;
+  padding: 35px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  align-items: flex-start;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.01);
+  transition: transform 0.3s;
+}
+
+.noveltyCard3D:hover {
+  transform: scale(1.02);
+}
+
+.noveltyIconBox {
+  font-size: 2rem;
+  background-color: #f8fafc;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  flex-shrink: 0;
+}
+
+.noveltyTextContent h4 {
+  font-size: 1.35rem;
+  color: #1e3a8a;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.noveltyTextContent p {
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- SECTION 5: COMMERCIAL CARDS INTERACTION MAPS --- */
+.sectionDark {
+  background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  padding: 100px 5%;
+}
+
+.sectionHeadingLight {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 45px 0;
+  color: #ffffff;
+}
+
+.commercialGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+.commBlock3D {
+  background-color: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+
+.commBlock3D:hover {
+  border-left-color: #60a5fa;
+  background-color: #334155;
+  transform: translateY(-4px);
+}
+
+.commBlock3D h4 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+}
+
+.commBlock3D p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- INTERACTIVE KEYFRAMES MATRIX --- */
+@keyframes backgroundScroll {
+  0% { transform: perspective(600px) rotateX(45deg) translateY(0); }
+  100% { transform: perspective(600px) rotateX(45deg) translateY(40px); }
+}
+
+@keyframes floatingMockup {
+  0% { transform: perspective(1000px) rotateX(16deg) rotateY(-20deg) rotateZ(8deg) translateY(0px); }
+  100% { transform: perspective(1000px) rotateX(22deg) rotateY(-28deg) rotateZ(12deg) translateY(-20px); }
+}
+
+@keyframes shineText {
+  0% { opacity: 0.8; color: #3b82f6; }
+  100% { opacity: 1; color: #60a5fa; }
+}
+
+/* Responsive adjustment matrix layers */
+@media (max-width: 968px) {
+  .containerSplit { grid-template-columns: 1fr; gap: 40px; }
+  .splitGrid, .noveltyGrid { grid-template-columns: 1fr; }
+  .sectionHeading, .sectionHeadingCentred, .sectionHeadingLight { font-size: 2.5rem; }
+}

@@ -1,0 +1,238 @@
+/* src/styles/Home.module.css */
+
+.heroSection {
+  min-height: calc(100vh - 85px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 20% 30%, #6f85a5 0%, #4079d6 50%, #1f52c9 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 60px 4%;
+  box-sizing: border-box;
+}
+
+/* 3D Moving Mesh Background Animation */
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.12) 2px, transparent 2px),
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  transform: perspective(500px) rotateX(60deg) translateY(0);
+  animation: gridMove 20s linear infinite;
+  z-index: 1;
+}
+
+/* TWO-COLUMN GRID ASSEMBLY WORKSPACE CONTAINER */
+.heroLayoutShell {
+  width: 100%;
+  max-width: 1300px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* LEFT SIDE PANEL CORE BLOCK FORMATTING */
+.heroLeftContent {
+  text-align: left;
+  transform: perspective(1000px) rotateX(4deg);
+}
+
+.heroSubtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: #ffffff; 
+  font-weight: 800;
+  margin: 0 0 25px 0;
+  background-color: rgba(15, 23, 42, 0.45); 
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.heroTitle {
+  font-size: 5.5rem;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  text-shadow: 
+    0 1px 0 #e2e8f0,
+    0 2px 0 #cbd5e1,
+    0 3px 0 #94a3b8,
+    0 4px 0 #64748b,
+    0 5px 0 #475569,
+    0 12px 25px rgba(15, 23, 42, 0.5);
+}
+
+.heroTagline {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  text-shadow: 0 4px 14px rgba(15, 23, 42, 0.4);
+}
+
+.heroDescription {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #f1f5f9;
+  max-width: 680px;
+  margin: 0 0 40px 0;
+  font-weight: 500;
+  text-shadow: 0 3px 10px rgba(15, 23, 42, 0.5);
+}
+
+.heroButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.primaryButton {
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #11257e 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.primaryButton:hover {
+  transform: translateY(-4px) scale(1.03);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4), 0 0 20px rgba(96, 165, 250, 0.3);
+}
+
+.secondaryButton {
+  padding: 14px 38px;
+  background: rgba(15, 23, 42, 0.35);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: 3D PORTRAIT SMARTPHONE MOCKUP FRAME
+   ========================================================================== */
+.heroRightMockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px; /* Provides depth for the tilt effect */
+}
+
+.phoneDeviceChassis {
+  width: 100%;
+  max-width: 320px;
+  background-color: #1e293b;
+  border: 4px solid #334155;
+  border-radius: 40px;
+  padding: 10px;
+  box-shadow: 
+    -20px 30px 60px -10px rgba(15, 23, 42, 0.7),
+    0 0 50px rgba(255, 255, 255, 0.05);
+  
+  /* Fixed 3D orientation matching the reference template */
+  transform: rotateX(12deg) rotateY(-22deg) rotateZ(4deg);
+  position: relative;
+  animation: gentleFloat 5s ease-in-out infinite alternate;
+}
+
+.phoneScreenGlass {
+  width: 100%;
+  aspect-ratio: 9 / 19.5; /* Emulates standard modern smartphone displays */
+  background-color: #000000;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.phoneRenderImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.screenInnerReflectionOverlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+}
+
+.phoneDynamicIslandBezel {
+  position: absolute;
+  top: 18px; left: 50%;
+  transform: translateX(-50%);
+  width: 85px; height: 18px;
+  background-color: #000000;
+  border-radius: 20px;
+  z-index: 20;
+}
+
+/* ==========================================================================
+   ANIMATION TIMING MAP
+   ========================================================================== */
+@keyframes gridMove {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+}
+
+@keyframes gentleFloat {
+  0% { transform: rotateX(12deg) rotateY(-22deg) rotateZ(4deg) translateY(0px); }
+  100% { transform: rotateX(14deg) rotateY(-18deg) rotateZ(5deg) translateY(-12px); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .heroTitle { font-size: 4.2rem; }
+  .heroLayoutShell { grid-template-columns: 1fr; gap: 60px; }
+  .heroLeftContent { text-align: center; }
+  .heroButtons { justify-content: center; }
+  .phoneDeviceChassis { transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); }
+  @keyframes gentleFloat {
+    0% { transform: rotateX(10deg) rotateY(-10deg) translateY(0px); }
+    100% { transform: rotateX(12deg) rotateY(-6deg) translateY(-10px); }
+  }
+}
+
+@media (max-width: 640px) {
+  .heroTitle { font-size: 3.2rem; }
+  .heroTagline { font-size: 1.35rem; }
+  .heroDescription { font-size: 1.05rem; }
+  .heroButtons { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+  .primaryButton, .secondaryButton { width: 100%; text-align: center; }
+  .phoneDeviceChassis { max-width: 260px; }
+}
