@@ -2,41 +2,44 @@
 
 .contactPageBg {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  min-height: calc(100vh - 74px); 
+  min-height: calc(100vh - 100px); /* Synchronized with global sticky navigation bar */
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 5%;
+  padding: 60px 4%;
   box-sizing: border-box;
 }
 
 .contactContainer {
-  width: 75%;
-  
+  width: 100%;
+  max-width: 1140px; /* Safe modern container baseline constraint */
   display: grid;
   grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
+  gap: 50px; /* Reduced from 80px to safely avoid overlapping margins on small laptops */
   align-items: center;
   box-sizing: border-box;
 }
 
-/* Left Side Styling */
+/* ==========================================================================
+   LEFT COLUMN: DEVELOPER PROFILE LABELS
+   ========================================================================== */
 .infoSide {
   text-align: left;
 }
 
 .contactHeading {
-  font-size: 3.5rem;
+  /* FLUID HEADERS: Downscales font scale dynamically on mobile to prevent layout overflow lines */
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: #1e3a8a;
   margin: 0 0 20px 0;
-  line-height: 1.15;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .contactSubtext {
-  font-size: 1.2rem;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
   color: #475569;
   line-height: 1.7;
   margin: 0 0 40px 0;
@@ -55,7 +58,7 @@
 }
 
 .detailIcon {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   background-color: #ffffff;
   width: 50px;
   height: 50px;
@@ -65,6 +68,7 @@
   justify-content: center;
   box-shadow: 0 4px 10px rgba(30, 58, 138, 0.04);
   border: 1px solid #e2e8f0;
+  flex-shrink: 0; /* Prevents icon distortion when texts wrap into double lines on phones */
 }
 
 .detailLabel {
@@ -83,6 +87,7 @@
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
+  word-break: break-all; /* Safe breakpoint tracking wrapper for long hyperlinks on phones */
 }
 
 .detailLink:hover {
@@ -96,17 +101,20 @@
   font-weight: 600;
 }
 
-/* Right Side Card Styling */
+/* ==========================================================================
+   RIGHT COLUMN: SUPABASE INTERACTIVE INPUT FORM CARD
+   ========================================================================== */
 .formCard {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
-  padding: 50px;
+  padding: clamp(24px, 5vw, 50px); /* Fluid internal spacing map buffers */
   border-radius: 20px;
   box-shadow: 
     0 20px 40px -5px rgba(30, 58, 138, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-sizing: border-box;
+  width: 100%;
 }
 
 .form {
@@ -134,7 +142,7 @@
 }
 
 .textarea {
-  resize: none;
+  resize: vertical; /* Enabled standard safe vertical adjustments only */
   font-family: inherit;
 }
 
@@ -149,6 +157,7 @@
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
   transition: all 0.2s ease;
+  width: 100%;
 }
 
 .formButton:hover {
@@ -156,24 +165,9 @@
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 968px) {
-  .contactContainer {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .contactHeading {
-    font-size: 2.8rem;
-  }
-
-  .formCard {
-    padding: 35px;
-  }
-}
-
-/* Append to the bottom of src/styles/Contact.module.css */
-
+/* ==========================================================================
+   STATUS HANDLING NOTIFICATION BLOCKS
+   ========================================================================== */
 .successMessageBlock {
   display: flex;
   flex-direction: column;
@@ -185,7 +179,7 @@
 .successCheckmarkIcon {
   font-size: 3.5rem;
   margin-bottom: 16px;
-  animation: popScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: popScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .successMessageBlock h3 {
@@ -226,10 +220,61 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @keyframes popScale {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ==========================================================================
+   STRICT RESPONSIVE GRID OVERRIDES (LAPTOPS, TABLETS & PHONES)
+   ========================================================================== */
+
+/* Intermediate Screen Boundaries (Small Laptops & Large Tablets) */
+@media (max-width: 1100px) {
+  .contactContainer {
+    width: 90%; /* Widened safety tracks */
+    gap: 30px;
+  }
+}
+
+/* Tablet & Mobile Grid Collapse Transition */
+@media (max-width: 968px) {
+  .contactPageBg {
+    padding: 50px 24px;
+  }
+  .contactContainer {
+    grid-template-columns: 1fr; /* Flattens into a clean top-to-bottom list */
+    gap: 50px;
+    width: 100%;
+    max-width: 550px; /* Centers and matches container shape block */
+  }
+  .infoSide {
+    text-align: center; /* Centers profile elements neatly on portrait screens */
+  }
+  .personalDetails {
+    align-items: center;
+  }
+  .detailItem {
+    width: 100%;
+    max-width: 380px;
+    text-align: left;
+  }
+}
+
+/* Ultra Small Smartphone Glass Layers */
+@media (max-width: 450px) {
+  .contactPageBg {
+    padding: 30px 16px;
+  }
+  .formCard {
+    padding: 24px 16px; /* Minimizes edge bounds to leave plenty of room for typing input text fields */
+  }
+  .input, .textarea {
+    padding: 14px 16px; /* Slimes down inputs slightly for smaller handheld sizes */
+  }
 }

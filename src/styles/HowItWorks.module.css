@@ -3,7 +3,7 @@
 .pageContainer {
   background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
   min-height: 100vh;
-  padding: 40px 0 80px 0;
+  padding: 60px 0 100px 0;
   box-sizing: border-box;
   position: relative;
   overflow-x: hidden;
@@ -23,8 +23,8 @@
 }
 
 .wideSection {
-  width: 94%;
-  max-width: 1600px; /* Expanded shell to comfortably fit modern tablet ratios side-by-side */
+  width: 90%;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 5;
@@ -34,52 +34,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 .metaLabelCentred {
   display: block;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.85rem;
+  font-weight: 800;
   text-transform: uppercase;
   color: #1049d8;
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
 }
 
 .cyberTitle {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #294686;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #1e3a8a;
   text-align: center;
-  margin: 0 0 12px 0;
-  letter-spacing: -0.01em;
-  font-family: 'Times New Roman', Times, serif;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
 }
 
 .cyberSubtitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
   color: #475569;
   text-align: center;
-  max-width: 800px;
+  max-width: 750px;
   line-height: 1.6;
   margin: 0;
 }
 
 .titleLine {
-  width: 160px; height: 4px;
+  width: 120px; height: 4px;
   background: linear-gradient(90deg, transparent, #1049d8, #38bdf8, transparent);
-  margin-top: 16px;
+  margin-top: 20px;
   border-radius: 2px;
 }
 
 /* ==========================================================================
-   INTERACTIVE RECONSTRUCTED TIMELINE TREE BLUEPRINTS
+   WORKFLOW ASSEMBLY SYSTEM LAYOUT GRID
    ========================================================================== */
 .interactiveWorkflowShell {
   display: grid;
-  grid-template-columns: 1fr 1.1fr; /* Rebalanced grid structure to allot extra landscape real estate to player shell */
-  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
   align-items: start;
   width: 100%;
 }
@@ -87,17 +86,14 @@
 .timelineSelectionColumn {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
   position: relative;
   padding-left: 50px;
 }
 
-/* Continuous vertical chronological trace timeline wire background */
 .verticalTimelineTreeLine {
   position: absolute;
-  left: 20px;
-  top: 10px;
-  bottom: 10px;
+  left: 20px; top: 10px; bottom: 10px;
   width: 4px;
   background-color: #cbd5e1;
   border-radius: 2px;
@@ -106,7 +102,7 @@
 
 .timelineButtonCard {
   background-color: rgba(255, 255, 255, 0.85);
-  border: 1px solid #cbd5e1;
+  border: 1px solid #e2e8f0;
   border-radius: 16px;
   padding: 24px 28px;
   cursor: pointer;
@@ -116,13 +112,10 @@
   z-index: 5;
 }
 
-/* Timeline Circle Pips positioned directly onto left container margins */
 .timelineBubbleNode {
   position: absolute;
-  left: -48px;
-  top: 24px;
-  width: 32px;
-  height: 32px;
+  left: -48px; top: 24px;
+  width: 32px; height: 32px;
   border-radius: 50%;
   background-color: #f1f5f9;
   border: 3px solid #cbd5e1;
@@ -143,16 +136,13 @@
 .timelineButtonCard:hover {
   background-color: #ffffff;
   border-color: #1049d8;
-  transform: translateX(4px);
+  transform: translateX(6px);
   box-shadow: 0 10px 25px rgba(16, 73, 216, 0.05);
 }
 
 .timelineButtonCard:hover .timelineBubbleNode {
   border-color: #1049d8;
   background-color: #eff6ff;
-}
-.timelineButtonCard:hover .nodeNumberInner {
-  color: #1049d8;
 }
 
 .cardHeaderIndicatorRow {
@@ -167,13 +157,12 @@
 }
 
 .cardHeaderTitleText {
-  margin: 0 0 8px 0; font-size: 1.35rem; font-weight: 800; color: #0f172a; transition: color 0.2s;
+  margin: 0 0 8px 0; font-size: 1.35rem; font-weight: 800; color: #0f172a;
 }
 .cardHeaderBriefText {
-  margin: 0; font-size: 0.95rem; color: #64748b; line-height: 1.5;
+  margin: 0; font-size: 0.95rem; color: #64748b; line-height: 1.6;
 }
 
-/* Selected Highlight State styles */
 .cardActiveState {
   background-color: #ffffff; border-color: #1049d8; box-shadow: 0 12px 30px rgba(16, 73, 216, 0.08);
 }
@@ -185,20 +174,18 @@
   transform: scale(1.1);
   box-shadow: 0 0 12px rgba(16, 73, 216, 0.3);
 }
-.bubbleNodeActive .nodeNumberInner {
-  color: #ffffff !important;
-}
+.bubbleNodeActive .nodeNumberInner { color: #ffffff !important; }
 
 /* ==========================================================================
-   RIGHT MONITOR TERMINAL DISPLAY LAYER
+   DESKTOP FIXED MONITOR CONSOLE STYLES
    ========================================================================== */
-.terminalDisplayColumn {
+.desktopTerminalColumn {
   position: relative;
 }
 
 .stickyTerminalFrame {
   position: sticky;
-  top: 110px;
+  top: 130px;
   width: 100%;
   background-color: #0f172a;
   border: 1px solid #1e293b;
@@ -226,130 +213,99 @@
 .dotRed { background-color: #ef4444; }
 .dotYellow { background-color: #eab308; }
 .dotGreen { background-color: #22c55e; }
+.terminalHeaderText { font-family: monospace; font-size: 0.75rem; color: #94a3b8; }
 
-.terminalHeaderText { font-family: monospace; font-size: 0.72rem; color: #94a3b8; letter-spacing: 0.05em; }
-
-.terminalBodyContent {
-  padding: 40px;
-  box-sizing: border-box;
-}
-
+.terminalBodyContent { padding: 40px; box-sizing: border-box; }
 .displayBadgeBadge {
   display: inline-block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #38bdf8; background-color: rgba(56, 189, 248, 0.1); padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; border: 1px solid rgba(56, 189, 248, 0.15);
 }
+.displayHeadingTitleText { margin: 0 0 20px 0; font-size: 1.6rem; font-weight: 800; color: #ffffff; }
 
-.displayHeadingTitleText {
-  margin: 0 0 20px 0; font-size: 1.7rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em;
-}
-
-/* --- THE HIGHLIGHT CHIPS ROW BLOCK --- */
-.technicalNodesTerminalBlock {
-  border-top: 1px solid #1e293b; padding-top: 20px;
-}
-.nodesSectionTitleText {
-  display: block; font-family: monospace; font-size: 0.8rem; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.05em;
-}
+.technicalNodesTerminalBlock { border-top: 1px solid #1e293b; padding-top: 20px; }
+.nodesSectionTitleText { display: block; font-family: monospace; font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 14px; }
 .nodesGridMatrix { display: flex; flex-direction: column; gap: 10px; }
 
 .tokenTagChipItem {
   display: flex; align-items: center; gap: 12px; background-color: rgba(30, 41, 59, 0.5); padding: 12px 18px; border-radius: 8px; border: 1px solid #1e293b;
 }
-.tokenBulletSymbol { color: #22c55e; font-size: 1.1rem; font-weight: 900; }
-.tokenCodeText {
-  font-size: 0.95rem; color: #e2e8f0; font-weight: 600;
-}
+.tokenBulletSymbol { color: #22c55e; font-weight: 900; }
+.tokenCodeText { font-size: 0.95rem; color: #e2e8f0; font-weight: 600; }
 
 /* ==========================================================================
-   PORTRAIT HIGH-RESOLUTION TABLET EMULATOR (SAMSUNG GALAXY TAB S9 FE SPECTRA)
+   PORTRAIT HIGH-RESOLUTION VIEWPORT CHASSIS SETUP
    ========================================================================== */
 .videoPlayerContainer {
-  width: 100%;
-  /* Expanded to upscale portrait rendering layers cleanly without truncation */
-  max-width: 500px; 
-  margin: 0 auto 35px auto;
-  background-color: #030712;
-  
-  /* Solid tablet form element frame geometry */
-  border-radius: 24px;
-  border: 6px solid #1e293b;
-  border-bottom: 6px solid #1e293b;
-  
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  
-  /* Standard 9:16 portrait screen recording proportion rules */
-  aspect-ratio: 9 / 16;
-  
-  box-shadow: 
-    0 30px 70px -15px rgba(0, 0, 0, 0.8),
-    0 0 50px rgba(16, 73, 216, 0.12);
-    
-  transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s, box-shadow 0.4s;
+  width: 100%; max-width: 340px; margin: 0 auto 30px auto;
+  background-color: #030712; border-radius: 24px; border: 6px solid #1e293b;
+  overflow: hidden; position: relative; display: flex; aspect-ratio: 9 / 16;
+  box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.7);
 }
 
-/* Subtle 3D lift animation when reviewing the active monitor window */
-.stickyTerminalFrame:hover .videoPlayerContainer {
-  transform: translateY(-6px);
-  box-shadow: 
-    0 35px 80px -10px rgba(0, 0, 0, 0.9),
-    0 0 60px rgba(56, 189, 248, 0.2);
-  border-color: #2563eb;
-}
+.terminalVideoNode { width: 100%; height: 100%; object-fit: contain; background-color: #090d16; }
+.videoOverlayGlow { position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 30px rgba(16, 73, 216, 0.2); pointer-events: none; }
 
-.terminalVideoNode {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Using contain keeps full top/bottom fields perfectly scale-fitted inside the tablet glass viewport */
-  display: block;
-  background-color: #090d16;
-}
-
-.videoOverlayGlow {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  box-shadow: inset 0 0 40px rgba(16, 73, 216, 0.2);
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* --- DYNAMIC DUAL WEIGHTAGE SELECTOR PILLS --- */
 .videoModeToggleBar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  background-color: rgba(30, 41, 59, 0.7);
-  padding: 6px;
-  border-radius: 14px;
-  margin-bottom: 28px;
-  border: 1px solid #1e293b;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  background-color: rgba(30, 41, 59, 0.7); padding: 6px; border-radius: 14px; margin-bottom: 24px; border: 1px solid #1e293b;
 }
-
 .toggleModeBtn {
-  background: none; border: none; padding: 12px 8px;
-  font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600;
-  color: #94a3b8; border-radius: 10px; cursor: pointer; transition: all 0.25s ease;
+  background: none; border: none; padding: 12px 8px; font-size: 0.9rem; font-weight: 600; color: #94a3b8; border-radius: 10px; cursor: pointer; transition: all 0.25s ease;
 }
-.toggleModeBtn:hover { color: #ffffff; background-color: rgba(255, 255, 255, 0.03); }
-.toggleModeBtnActive {
-  background-color: #1049d8; color: #ffffff !important; box-shadow: 0 4px 12px rgba(16, 73, 216, 0.35);
+.toggleModeBtn:hover { color: #ffffff; }
+.toggleModeBtnActive { background-color: #1049d8; color: #ffffff !important; }
+
+/* Hidden container nodes during desktop browsing sessions */
+.mobileTerminalWrapper {
+  display: none;
 }
 
 /* ==========================================================================
-   RESPONSIVE OVERRIDES
+   RESPONSIVE LAYOUT SWITCH CONFIGURATIONS (TABLETS & PHONES)
    ========================================================================== */
+
 @media (max-width: 1140px) {
-  .interactiveWorkflowShell { grid-template-columns: 1fr; gap: 40px; }
-  .stickyTerminalFrame { position: static; top: auto; }
-  .videoPlayerContainer { max-width: 440px; }
+  /* Hides the desktop right-side column panel */
+  .desktopTerminalColumn { 
+    display: none; 
+  }
+  
+  /* Convers the layout to a single column list stack */
+  .interactiveWorkflowShell { 
+    grid-template-columns: 1fr; 
+  }
+  
+  /* Activates inline mobile viewport insertion blocks */
+  .mobileTerminalWrapper {
+    display: block;
+    width: 100%;
+    margin-top: -12px;
+    margin-bottom: 20px;
+    padding-left: 0;
+    animation: slideDownAccordion 0.35s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
+  
+  .stickyTerminalFrame {
+    position: static;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+  
+  .timelineButtonCard:hover {
+    transform: none; /* Disables slide translations on mobile taps */
+  }
 }
 
 @media (max-width: 640px) {
-  .cyberTitle { font-size: 2.2rem; }
-  .timelineSelectionColumn { padding-left: 40px; }
-  .verticalTimelineTreeLine { left: 14px; }
-  .timelineBubbleNode { left: -38px; }
-  .terminalBodyContent { padding: 20px; }
-  .displayHeadingTitleText { font-size: 1.3rem; }
-  .videoPlayerContainer { max-width: 100%; }
+  .wideSection { width: 92%; }
+  .timelineSelectionColumn { padding-left: 36px; }
+  .verticalTimelineTreeLine { left: 12px; }
+  .timelineBubbleNode { left: -34px; width: 28px; height: 28px; top: 26px; }
+  .nodeNumberInner { font-size: 0.75rem; }
+  .terminalBodyContent { padding: 24px 16px; }
+  .displayHeadingTitleText { font-size: 1.35rem; }
+  .videoPlayerContainer { max-width: 280px; }
+}
+
+@keyframes slideDownAccordion {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

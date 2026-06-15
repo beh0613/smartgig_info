@@ -7,7 +7,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <header className={styles.heroSection}>
+    <div className={styles.heroSection}>
       <div className={styles.lightCyberGridBG}></div>
       
       <div className={styles.heroLayoutShell}>
@@ -26,9 +26,10 @@ export default function Home() {
           </p>
           
           <div className={styles.heroButtons}>
+            {/* FIXED: Changed route argument parameter string from '/About' to lowercase '/about' */}
             <button 
               className={styles.primaryButton} 
-              onClick={() => navigate('/About')}
+              onClick={() => navigate('/about')}
             >
               🚀 Get Started
             </button>
@@ -46,7 +47,6 @@ export default function Home() {
         <div className={styles.heroRightMockup}>
           <div className={styles.phoneDeviceChassis}>
             <div className={styles.phoneScreenGlass}>
-              {/* Renders your customized welcome.jpeg screenshot inside the screen frame */}
               <img 
                 src={welcome} 
                 alt="SmartGig Mobile Application Interface View" 
@@ -54,12 +54,11 @@ export default function Home() {
               />
               <div className={styles.screenInnerReflectionOverlay}></div>
             </div>
-            {/* Minimal speaker bezel node mimicry */}
             <div className={styles.phoneDynamicIslandBezel}></div>
           </div>
         </div>
 
       </div>
-    </header>
+    </div>
   );
 }

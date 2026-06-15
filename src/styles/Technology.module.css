@@ -6,6 +6,7 @@
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
+  position: relative;
 }
 
 .lightCyberGridBG {
@@ -18,17 +19,18 @@
   background-size: 55px 55px;
   transform: perspective(1000px) rotateX(60deg);
   z-index: 1;
+  pointer-events: none;
 }
 
 .sectionGrey {
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  padding: 80px 0;
+  padding: clamp(40px, 6vw, 80px) 0;
   width: 100%;
   border-top: 1px solid #e2e8f0;
 }
 
 .wideSection {
-  width: 94%;
+  width: 90%; /* Optimized from 94% to provide cleaner sidebar safety padding */
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -53,28 +55,27 @@
 }
 
 .cyberTitle {
-  font-size: 2.8rem;
+  font-size: clamp(2rem, 4vw, 2.8rem); /* Fluid responsive typography scale */
   font-weight: 800;
   color: #344a86;
   text-align: center;
   margin: 0 0 12px 0;
   letter-spacing: -0.02em;
-  font-family: 'Times New Roman', Times, serif;
 }
 
 .titleLine {
-  width: 160px; height: 4px;
+  width: 120px; height: 4px;
   background: linear-gradient(90deg, transparent, #2563eb, #38bdf8, transparent);
   margin-top: 10px;
   border-radius: 2px;
 }
 
 /* ==========================================================================
-   SECTION 1: TECH GRID PANELS (ANIMATED LOADING INTRO + HOVER LIVE JITTER SHAKE)
+   SECTION 1: TECH GRID PANELS (ANIMATED CASCADE)
    ========================================================================== */
 .gridContainerTech {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Clean default desktop grid */
   gap: 30px;
   width: 100%;
 }
@@ -83,7 +84,7 @@
   background: rgba(212, 224, 250, 0.96); 
   border: 1px solid #f0f4ff;
   border-radius: 20px;
-  padding: 35px 25px;
+  padding: clamp(24px, 4vw, 35px) 24px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -92,17 +93,18 @@
   transform-style: preserve-3d;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s linear;
 
-  /* Staggered On-Load Card Intrusion Cascade Animation */
   opacity: 0;
   animation: cardEntranceReveal 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   animation-delay: calc(var(--card-index) * 120ms);
 }
 
-/* Combines 3D perspective lift with an active, fast holographic matrix jitter shake */
-.techCard3D:hover {
-  border-color: #1f57d1;
-  box-shadow: 0 30px 60px -5px rgba(15, 23, 42, 0.35), 0 0 25px rgba(56, 189, 248, 0.25);
-  animation: holographicLiveJitter 0.35s linear infinite;
+/* Media hover micro-jitter vectors configuration rule layer */
+@media (min-width: 1025px) {
+  .techCard3D:hover {
+    border-color: #1f57d1;
+    box-shadow: 0 30px 60px -5px rgba(15, 23, 42, 0.35), 0 0 25px rgba(56, 189, 248, 0.25);
+    animation: holographicLiveJitter 0.35s linear infinite;
+  }
 }
 
 .techCardHeader {
@@ -133,7 +135,7 @@
 }
 
 .techPhoto3D {
-  width: 85px; height: 85px;
+  width: 75px; height: 75px; /* Scaled down slightly to fit intermediate screen sizes */
   object-fit: contain;
   z-index: 5;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
@@ -156,10 +158,10 @@
 }
 
 .nodeText {
-  font-size: 1.4rem; font-weight: 800; color: #030303; margin: 0 0 10px 0;
+  font-size: 1.35rem; font-weight: 800; color: #030303; margin: 0 0 10px 0;
 }
 .descText {
-  font-size: 0.95rem; color: #767d86; line-height: 1.6; margin: 0;
+  font-size: 0.95rem; color: #64748b; line-height: 1.6; margin: 0;
 }
 .cardGlowPulse {
   position: absolute; bottom: 0; left: 0; width: 100%; height: 3px;
@@ -169,7 +171,7 @@
 .techCard3D:hover .cardGlowPulse { opacity: 1; }
 
 /* ==========================================================================
-   SECTION 2: MATH PILE ENGINE SPREAD MATRICES
+   SECTION 2: MATH SPREAD MATRICES
    ========================================================================== */
 .stackVisualStage {
   width: 100%;
@@ -191,6 +193,7 @@
   transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* DESKTOP EXPANDED SPREAD GRID CONFIG */
 .deckSpreadActive {
   width: 100% !important;
   max-width: 1440px;
@@ -292,32 +295,87 @@
 }
 
 /* ==========================================================================
-   SECTION 3: OUTSIDE READOUT CORE SYSTEM TERMINAL
+   SECTION 3: READOUT SYSTEM TERMINAL TERMINAL (FIXED FOR MOBILE VIEWPORTS)
    ========================================================================== */
 .finalCompilationBlockOutside {
-  width: 100%; margin-top: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  width: 100%; 
+  margin-top: 50px; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center;
+  padding: 0 20px; 
+  box-sizing: border-box;
 }
+
 .compilationTitle {
-  font-size: 2rem; font-weight: 900; color: #1e3a8a; letter-spacing: 0.02em; margin: 0 0 25px 0; display: flex; align-items: center; gap: 12px;
+  font-size: clamp(1.4rem, 3vw, 2rem); 
+  font-weight: 900; 
+  color: #1e3a8a; 
+  letter-spacing: 0.02em; 
+  margin: 0 0 25px 0; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px;
 }
 .trophyIcon { font-size: 1.8rem; }
 
 .matchedFormulaTerminal {
-  width: 100%; max-width: 1100px; background-color: #0f172a; border: 2px solid #1e3a8a; border-radius: 16px; padding: 35px 40px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
-}
-.formulaRowTop code {
-  font-family: 'Fira Code', monospace; font-size: 1.3rem; color: #ffffff; font-weight: 700; text-align: center;
-}
-.terminalInnerDivider {
-  width: 100%; height: 1px; background-color: rgba(255, 255, 255, 0.1); margin: 24px 0;
-}
-.formulaRowBottom code {
-  font-family: 'Fira Code', monospace; font-size: 1.35rem; color: #38bdf8; font-weight: 800;
-}
-.compilationFootnote {
-  margin: 24px 0 0 0; color: #64748b; font-size: 0.95rem; text-align: center;
+  width: 100%; 
+  max-width: 1100px; 
+  background-color: #0f172a; 
+  border: 2px solid #1e3a8a; 
+  border-radius: 16px; 
+  padding: clamp(20px, 4vw, 40px); 
+  box-sizing: border-box; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
 }
 
+/* CHANGED: Removes forced single-line clipping and wraps formulas into multi-line blocks on phones */
+.formulaRowTop, .formulaRowBottom {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.formulaRowTop code {
+  font-family: 'Fira Code', monospace; 
+  font-size: clamp(0.9rem, 2vw, 1.3rem); 
+  color: #ffffff; 
+  font-weight: 700;
+  white-space: pre-wrap; /* FIXED: Allows equations to break into the next line instead of going off-screen */
+  word-break: break-word;
+  display: block;
+  line-height: 1.5;
+}
+
+.terminalInnerDivider {
+  width: 100%; 
+  height: 1px; 
+  background-color: rgba(255, 255, 255, 0.1); 
+  margin: 20px 0;
+}
+
+.formulaRowBottom code {
+  font-family: 'Fira Code', monospace; 
+  font-size: clamp(0.95rem, 2.2vw, 1.35rem); 
+  color: #38bdf8; 
+  font-weight: 800;
+  white-space: pre-wrap; /* FIXED: Allows final evaluation score lines to wrap smoothly */
+  word-break: break-word;
+  display: block;
+  line-height: 1.5;
+}
+
+.compilationFootnote {
+  margin: 24px 0 0 0; 
+  color: #64748b; 
+  font-size: 0.95rem; 
+  text-align: center;
+}
 /* ==========================================================================
    VECTORS TIMING KEYFRAMES
    ========================================================================== */
@@ -326,7 +384,6 @@
   100% { opacity: 1; transform: translateY(0) perspective(1000px) rotateX(0deg); }
 }
 
-/* Micro-Jitter calculation vectors for hover state */
 @keyframes holographicLiveJitter {
   0% { transform: perspective(1000px) translateY(-8px) translateZ(12px) translateX(0px) rotateY(0deg); }
   20% { transform: perspective(1000px) translateY(-7.5px) translateZ(12px) translateX(-0.5px) rotateY(-0.2deg); }
@@ -336,32 +393,70 @@
   100% { transform: perspective(1000px) translateY(-8px) translateZ(12px) translateX(0px) rotateY(0deg); }
 }
 
-@keyframes logoFloatingBreath {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-@keyframes logoShadowPulse {
-  0%, 100% { transform: scale(1); opacity: 0.12; }
-  50% { transform: scale(0.85); opacity: 0.05; }
-}
-@keyframes frontTileFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-@keyframes clickRadar {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
+@keyframes logoFloatingBreath { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+@keyframes logoShadowPulse { 0%, 100% { transform: scale(1); opacity: 0.12; } 50% { transform: scale(0.85); opacity: 0.05; } }
+@keyframes frontTileFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes clickRadar { 0% { transform: scale(0.6); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
+
+/* ==========================================================================
+   STRICT RESPONSIVE GRID OVERRIDES (TABLET & SMARTPHONE VIEWS)
+   ========================================================================== */
+
+/* Intermediate Tablet & Small Laptop Screens */
+@media (max-width: 1200px) {
+  .gridContainerTech { 
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 24px;
+  }
+  
+  /* Convers the deck spread cards into a clean vertical flex structure list directly */
+  .interactiveDeckWrapper { 
+    width: 100% !important; 
+    height: auto !important;
+    gap: 24px; 
+    position: static !important; 
+    display: flex !important; 
+    flex-direction: column !important; 
+  }
+  .deckSpreadActive {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .placeholderFrontCard { 
+    display: none !important; /* Removes interactive cover card to expose active blocks immediately */
+  }
+  .layeredMathCard { 
+    position: static !important; 
+    width: 100% !important; 
+    transform: none !important; 
+    opacity: 1 !important; 
+  }
 }
 
-/* --- ADAPTIVE RESPONSIVENESS OVERRIDES --- */
-@media (max-width: 1200px) {
-  .gridContainerTech, .deckSpreadActive { grid-template-columns: repeat(2, 1fr) !important; }
-  .interactiveDeckWrapper { width: max-content; gap: 24px; position: static; display: flex; flex-direction: column; }
-  .layeredMathCard { position: static; width: 100%; transform: none !important; opacity: 1 !important; }
-  .placeholderFrontCard { display: none; }
-}
+/* Handheld Smartphone Views */
 @media (max-width: 768px) {
-  .gridContainerTech, .deckSpreadActive { grid-template-columns: 1fr !important; }
-  .cyberTitle { font-size: 2.2rem; }
-  .formulaRowTop code, .formulaRowBottom code { font-size: 0.9rem; }
+  .pageContainer {
+    padding-top: 40px;
+  }
+  .sectionGrey {
+    padding: 50px 0;
+  }
+  .gridContainerTech { 
+    grid-template-columns: 1fr !important; /* Completely flattens into a 1-column layout */
+    gap: 20px;
+  }
+  .techCard3D {
+    padding: 24px 20px;
+    transform: none !important; /* Disables mouse perspective tilts for better touch response performance */
+  }
+  .techPhoto3D {
+    width: 65px; height: 65px;
+  }
+  .placeholderDisplayBox, .formulaDisplay {
+    padding: 14px;
+    min-height: auto;
+  }
+  .glowCode {
+    font-size: 0.95rem;
+  }
 }

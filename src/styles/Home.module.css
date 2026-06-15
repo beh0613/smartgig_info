@@ -1,14 +1,15 @@
 /* src/styles/Home.module.css */
 
 .heroSection {
-  min-height: calc(100vh - 85px); 
+  min-height: calc(100vh - 100px); /* Adjusts perfectly below the 100px navbar */
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle at 20% 30%, #6f85a5 0%, #4079d6 50%, #1f52c9 100%);
   position: relative;
   overflow: hidden;
-  padding: 60px 4%;
+  padding: 40px 24px; /* Reduced padding prevents content from dropping down below viewport limits */
   box-sizing: border-box;
 }
 
@@ -148,7 +149,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1200px; /* Provides depth for the tilt effect */
+  perspective: 1200px; 
 }
 
 .phoneDeviceChassis {
@@ -162,7 +163,6 @@
     -20px 30px 60px -10px rgba(15, 23, 42, 0.7),
     0 0 50px rgba(255, 255, 255, 0.05);
   
-  /* Fixed 3D orientation matching the reference template */
   transform: rotateX(12deg) rotateY(-22deg) rotateZ(4deg);
   position: relative;
   animation: gentleFloat 5s ease-in-out infinite alternate;
@@ -170,7 +170,7 @@
 
 .phoneScreenGlass {
   width: 100%;
-  aspect-ratio: 9 / 19.5; /* Emulates standard modern smartphone displays */
+  aspect-ratio: 9 / 19.5; 
   background-color: #000000;
   border-radius: 32px;
   overflow: hidden;
@@ -214,25 +214,96 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN ADAPTATIONS
+   RESPONSIVE DESIGN ADAPTATIONS (SMARTPHONE & TABLET LAYER)
    ========================================================================== */
+
+/* Medium Laptops & Tablets (iPad landscape/portrait views) */
 @media (max-width: 1024px) {
-  .heroTitle { font-size: 4.2rem; }
-  .heroLayoutShell { grid-template-columns: 1fr; gap: 60px; }
-  .heroLeftContent { text-align: center; }
-  .heroButtons { justify-content: center; }
-  .phoneDeviceChassis { transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); }
+  .heroSection {
+    min-height: auto;
+    padding: 40px 5%;
+  }
+  .heroTitle { 
+    font-size: 4rem; 
+  }
+  .heroTagline {
+    font-size: 1.6rem;
+  }
+  .heroLayoutShell { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+  }
+  .heroLeftContent { 
+    text-align: center; 
+    transform: none;
+  }
+  .heroSubtitle {
+    margin-bottom: 15px;
+  }
+  .heroDescription {
+    margin: 0 auto 30px auto;
+  }
+  .heroButtons { 
+    justify-content: center; 
+  }
+  .phoneDeviceChassis { 
+    transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg); 
+    max-width: 290px;
+  }
   @keyframes gentleFloat {
     0% { transform: rotateX(10deg) rotateY(-10deg) translateY(0px); }
     100% { transform: rotateX(12deg) rotateY(-6deg) translateY(-10px); }
   }
 }
 
+/* Standard Mobile Phones (iPhone, Samsung, etc.) */
 @media (max-width: 640px) {
-  .heroTitle { font-size: 3.2rem; }
-  .heroTagline { font-size: 1.35rem; }
-  .heroDescription { font-size: 1.05rem; }
-  .heroButtons { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
-  .primaryButton, .secondaryButton { width: 100%; text-align: center; }
-  .phoneDeviceChassis { max-width: 260px; }
+  .heroSection {
+    padding: 30px 20px;
+  }
+  .heroSubtitle {
+    font-size: 0.75rem;
+    padding: 8px 14px;
+    line-height: 1.4;
+  }
+  .heroTitle { 
+    font-size: 2.8rem; /* Scaled down perfectly to fit phone view widths safely */
+    text-shadow: 0 4px 12px rgba(15, 23, 42, 0.4); /* Removed deep desktop text extrusions */
+  }
+  .heroTagline { 
+    font-size: 1.25rem; 
+    margin-bottom: 15px;
+  }
+  .heroDescription { 
+    font-size: 1rem; 
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+  .heroButtons { 
+    flex-direction: column; 
+    width: 100%; 
+    max-width: 280px; 
+    margin: 0 auto; 
+    gap: 12px;
+  }
+  .primaryButton, .secondaryButton { 
+    width: 100%; 
+    text-align: center; 
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+  .phoneDeviceChassis { 
+    max-width: 240px; /* Slimmed display profile for mobile viewports */
+    margin-top: 10px;
+  }
+}
+
+/* Ultra Small Screens */
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 2.3rem;
+  }
+  .heroTagline {
+    font-size: 1.1rem;
+  }
 }

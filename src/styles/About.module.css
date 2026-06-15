@@ -6,19 +6,24 @@
   overflow-x: hidden;
 }
 
+/* FLUID CONTAINER: Replaced hardcoded width with a safe, responsive bound tracking loop */
 .container {
-  width: 75%;
-  
+  width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
 }
 
-/* --- SECTION 1: HERO CONTAINER GRID --- */
+/* ==========================================================================
+   SECTION 1: HERO CONTAINER GRID
+   ========================================================================== */
 .sectionBlue {
   background: radial-gradient(circle at top left, #1e3a8a 0%, #0f172a 100%);
-  padding: 100px 5%;
+  padding: clamp(60px, 8vw, 120px) 5%;
   position: relative;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Animating Background Space Line Mesh */
@@ -29,7 +34,9 @@
   height: 200%;
   top: -50%;
   left: -50%;
-  background-image: linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
   background-size: 40px 40px;
   transform: perspective(600px) rotateX(45deg) translateY(0);
   animation: backgroundScroll 25s linear infinite;
@@ -38,11 +45,11 @@
 
 .containerSplit {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 60px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
   align-items: center;
   position: relative;
   z-index: 5;
@@ -64,43 +71,41 @@
 }
 
 .sectionHeading {
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 5vw, 3.5rem); /* Prevents screen spillover */
   font-weight: 900;
   margin: 0 0 24px 0;
   color: #ffffff;
+  line-height: 1.2;
   text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 .mainDescription {
-  font-size: 1.3rem;
-  line-height: 1.8;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.7;
   color: #cbd5e1;
   margin: 0;
 }
 
-/* --- 3D INTERACTIVE GRAPHIC APP PHONE MOCKUP HOOK --- */
+/* --- 3D INTERACTIVE PHONE MOCKUP HOOK --- */
 .graphicColumn {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .mockupContainer {
   position: relative;
   transform: perspective(1000px) rotateX(20deg) rotateY(-25deg) rotateZ(10deg);
   animation: floatingMockup 5s ease-in-out infinite alternate;
+  width: 100%;
+  max-width: 300px; /* Safe mobile baseline bound constraint */
 }
 
-.mockupImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Stretches and preserves ratio inside the mockup shell nicely */
-  border-radius: 32px; /* Curves matching the outer glass frame */
-  pointer-events: none; /* Prevents dragging glitches while spinning */
-}
 .mockupGraphic {
-  width: 300px;
-  height: 600px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 18; /* Perfect portrait chassis aspect scaling */
   background: rgba(30, 41, 59, 0.7);
   border: 4px solid #475569;
   border-radius: 40px;
@@ -113,13 +118,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 12px;
   box-sizing: border-box;
   transition: border-color 0.3s;
 }
 
 .mockupGraphic:hover {
   border-color: #3b82f6;
+}
+
+.mockupImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 32px; 
+  pointer-events: none; 
 }
 
 .mockupPlaceholderText {
@@ -134,21 +147,25 @@
   border-radius: 20px;
 }
 
-/* --- SECTION 2: PROBLEM/OBJECTIVE 3D CARD OVERLAY --- */
+/* ==========================================================================
+   SECTION 2: PROBLEM/OBJECTIVE 3D CARD OVERLAY
+   ========================================================================== */
 .sectionWhite {
   background-color: #ffffff;
-  padding: 100px 5%;
+  padding: clamp(50px, 6vw, 100px) 5%;
 }
 
 .splitGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .gridCard3D {
   background: #ffffff;
-  padding: 50px;
+  padding: clamp(24px, 4vw, 50px);
   border-radius: 24px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.03);
   border: 1px solid #f1f5f9;
@@ -187,10 +204,12 @@
   line-height: 1.6;
 }
 
-/* --- SECTION 3: 6 INDICATORS WITH GRID DEPTH TRANSLATIONS --- */
+/* ==========================================================================
+   SECTION 3: 6 INDICATORS WITH GRID DEPTH TRANSLATIONS
+   ========================================================================== */
 .sectionGrey {
   background-color: #f8fafc;
-  padding: 100px 5%;
+  padding: clamp(50px, 6vw, 100px) 5%;
 }
 
 .metaLabelCentred {
@@ -205,7 +224,7 @@
 }
 
 .sectionHeadingCentred {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   color: #1e3a8a;
   text-align: center;
@@ -213,16 +232,18 @@
 }
 
 .subtitleCentred {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: #64748b;
   text-align: center;
-  margin: 0 0 60px 0;
+  margin: 0 0 50px 0;
 }
 
 .indicatorsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .indicatorCard3D {
@@ -287,11 +308,15 @@
   margin: 0;
 }
 
-/* --- SECTION 4: SYSTEM NOVELTY FLEX STACKS --- */
+/* ==========================================================================
+   SECTION 4: SYSTEM NOVELTY FLEX STACKS
+   ========================================================================== */
 .noveltyGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .noveltyCard3D {
@@ -337,14 +362,16 @@
   margin: 0;
 }
 
-/* --- SECTION 5: COMMERCIAL CARDS INTERACTION MAPS --- */
+/* ==========================================================================
+   SECTION 5: COMMERCIAL CARDS INTERACTION MAPS
+   ========================================================================== */
 .sectionDark {
   background: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-  padding: 100px 5%;
+  padding: clamp(50px, 6vw, 100px) 5%;
 }
 
 .sectionHeadingLight {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 900;
   margin: 0 0 45px 0;
   color: #ffffff;
@@ -352,8 +379,10 @@
 
 .commercialGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
 .commBlock3D {
@@ -384,7 +413,9 @@
   margin: 0;
 }
 
-/* --- INTERACTIVE KEYFRAMES MATRIX --- */
+/* ==========================================================================
+   INTERACTIVE ANIMATION TIMINGS
+   ========================================================================== */
 @keyframes backgroundScroll {
   0% { transform: perspective(600px) rotateX(45deg) translateY(0); }
   100% { transform: perspective(600px) rotateX(45deg) translateY(40px); }
@@ -400,9 +431,59 @@
   100% { opacity: 1; color: #60a5fa; }
 }
 
-/* Responsive adjustment matrix layers */
-@media (max-width: 968px) {
-  .containerSplit { grid-template-columns: 1fr; gap: 40px; }
-  .splitGrid, .noveltyGrid { grid-template-columns: 1fr; }
-  .sectionHeading, .sectionHeadingCentred, .sectionHeadingLight { font-size: 2.5rem; }
+/* ==========================================================================
+   RESPONSIVE DESIGN ADAPTATIONS (LAPTOP, TABLET, PHONE)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .containerSplit {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .heroText {
+    text-align: center;
+    transform: none;
+  }
+  /* Straighten out the perspective matrix slightly for tablet screens */
+  .mockupContainer {
+    transform: rotateX(10deg) rotateY(-10deg) rotateZ(0deg);
+  }
+  @keyframes floatingMockup {
+    0% { transform: rotateX(10deg) rotateY(-10deg) translateY(0px); }
+    100% { transform: rotateX(12deg) rotateY(-6deg) translateY(-15px); }
+  }
+}
+
+@media (max-width: 768px) {
+  .splitGrid, .noveltyGrid {
+    grid-template-columns: 1fr;
+  }
+  .noveltyCard3D {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+  .sectionHeadingCentred, .sectionHeadingLight {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionBlue, .sectionWhite, .sectionGrey, .sectionDark {
+    padding: 50px 20px;
+  }
+  /* Flatten out the phone display completely on small viewports */
+  .mockupContainer {
+    transform: none !important;
+    max-width: 240px;
+    animation: mobileFloat 4s ease-in-out infinite alternate;
+  }
+  @keyframes mobileFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+  }
+  .gridCard3D {
+    padding: 24px;
+  }
 }
